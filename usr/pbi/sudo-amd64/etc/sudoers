@@ -1,0 +1,3 @@
+root ALL=(root) NOPASSWD: ALL
+admin ALL=(root) NOPASSWD: ALL
+%admins ALL=(root) NOPASSWD: ALL

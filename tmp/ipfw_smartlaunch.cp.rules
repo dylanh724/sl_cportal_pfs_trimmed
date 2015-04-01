@@ -1,0 +1,42 @@
+flush
+add 65291 allow pfsync from any to any
+add 65292 allow carp from any to any
+# layer 2: pass ARP
+add 65301 pass layer2 mac-type arp,rarp
+# pfsense requires for WPA
+add 65302 pass layer2 mac-type 0x888e,0x88c7
+# PPP Over Ethernet Session Stage/Discovery Stage
+add 65303 pass layer2 mac-type 0x8863,0x8864
+
+# layer 2: block anything else non-IP(v4/v6)
+add 65307 deny layer2 not mac-type ip,ipv6
+add 65310 pass ip from any to { 255.255.255.255 or 192.168.0.1  } in
+add 65311 pass ip from { 255.255.255.255 or 192.168.0.1  } to any out
+add 65312 pass icmp from { 255.255.255.255 or 192.168.0.1  } to any out icmptype 0
+add 65313 pass icmp from any to { 255.255.255.255 or 192.168.0.1  } in icmptype 8 
+add 65314 pipe tablearg ip from table(3) to any in
+add 65315 pipe tablearg ip from any to table(4) in
+add 65316 pipe tablearg ip from table(3) to any out
+add 65317 pipe tablearg ip from any to table(4) out
+add 65318 pipe tablearg ip from table(1) to any in
+add 65319 pipe tablearg ip from any to table(2) out
+
+# redirect non-authenticated clients to captive portal
+add 65532 fwd 127.0.0.1,8000 tcp from any to any dst-port 80 in 
+# let the responses from the captive portal web server back out
+add 65533 pass tcp from any to any out
+# Dylan hack for SL RESTful
+add 7833 pass tcp from any to any out
+# block everything else
+add 65534 deny all from any to any
+
+table 3 add 192.168.0.2/32 2966
+table 4 add 192.168.0.2/32 2967
+table 3 add 192.168.0.25/32 2968
+table 4 add 192.168.0.25/32 2969
+table 3 add 192.168.1.1/32 2970
+table 4 add 192.168.1.1/32 2971
+table 3 add 192.168.1.25/32 2972
+table 4 add 192.168.1.25/32 2973
+
+# captiveportal_allowedhostname_configure()

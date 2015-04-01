@@ -1,0 +1,9 @@
+dhclient: PREINIT
+dhclient: Starting delete_old_states()
+dhclient: Comparing IPs: Old: 192.168.1.104 New: 
+dhclient: Removing states from old IP '192.168.1.104' (new IP '')
+0 states cleared
+killed 0 src nodes from 1 sources and 0 destinations
+DHCPREQUEST on em0 to 255.255.255.255 port 67
+DHCPACK from 192.168.1.1
+bound to 192.168.1.104 -- renewal in 43200 seconds.
