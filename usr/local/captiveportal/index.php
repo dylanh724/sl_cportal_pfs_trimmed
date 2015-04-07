@@ -121,13 +121,16 @@ if ($_POST['logout_id']) {
 	echo <<<EOD
 <HTML>
 <HEAD><TITLE>Disconnecting...</TITLE></HEAD>
-<BODY BGCOLOR="#435370">
-<SPAN STYLE="color: #ffffff; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">
-<B>You have been disconnected.</B>
+<meta HTTP-EQUIV="REFRESH" content="0; url="$redirurl">
+<link rel="icon" href="captiveportal-favicon.png">
+<link type="text/css" rel="stylesheet" href="captiveportal-style.css"
+<BODY BGCOLOR="#435370" id="dcbg">
+<SPAN id="dc">
+Disconnecting.. redirecting to login page.
 </SPAN>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
-setTimeout('window.close();',5000) ;
+setTimeout('window.close();',0) ;
 -->
 </SCRIPT>
 </BODY>

@@ -9,6 +9,8 @@
     Copyright (C) 2003-2004 Manuel Kasper <mk@neon1.net>.
     All rights reserved.
 
+	Modified for use with Smartlaunch 4.8+
+
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
 
@@ -76,14 +78,14 @@ $g = array(
 	"nopkg_platforms" => array("cdrom"),
 	"minimum_ram_warning" => "101",
 	"minimum_ram_warning_text" => "128 MB",
-	"minimum_nic_count" => "1",
-	"minimum_nic_count_text" => "*AT LEAST* 1",	
+	"minimum_nic_count" => "2",
+	"minimum_nic_count_text" => "*AT LEAST* 2",	
 	"wan_interface_name" => "wan", 
 	"nopccard_platforms" => array("wrap", "net48xx"),
 	"xmlrpcbaseurl" => "https://packages.pfsense.org",
 	"captiveportal_path" => "/usr/local/captiveportal",
 	"captiveportal_element_path" => "/var/db/cpelements",
-	"captiveportal_element_sizelimit" => 1048576,
+	"captiveportal_element_sizelimit" => 104857699,
 	"xmlrpcpath" => "/xmlrpc.php",
 	"embeddedbootupslice" => "/dev/ad0a",
 	"services_dhcp_server_enable" => true,
